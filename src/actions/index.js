@@ -9,12 +9,13 @@ export const saveComment = (comment) => {
 };
 
 export const fetchComments = async () => {
-  const {data} = await axios.get("https://jsonplaceholder.typicode.com/comments");
+  const { data } = await axios.get(
+    "https://jsonplaceholder.typicode.com/comments"
+  );
 
   return { type: FETCH_COMMENTS, payload: data };
 };
 
-export const changeAuth = async (isLoggedIn) => {
-
-  return { type: CHANGE_AUTH, payload: isLoggedIn };
+export const changeAuth = (isLoggedIn) => async (dispatch) => {
+  dispatch({ type: CHANGE_AUTH, payload: isLoggedIn });
 };

@@ -1,0 +1,25 @@
+{
+  "name": "react-advanced-udemy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "npm start --prefix client",
+    "server": "npm start --prefix server",
+    "start": "concurrently \"npm run client\" \"npm run server\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faris-xapiens/react-advance-udemy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faris-xapiens/react-advance-udemy/issues"
+  },
+  "homepage": "https://github.com/faris-xapiens/react-advance-udemy#readme",
+  "dependencies": {
+    "concurrently": "^6.2.0"
+  }
+}

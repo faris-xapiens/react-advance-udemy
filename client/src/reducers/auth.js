@@ -1,11 +1,18 @@
-import { CHANGE_AUTH } from "actions/types";
+import { AUTH_ERROR, AUTH_USER } from "../actions/types";
 
-export default function (state = false, action) {
-  const { type, payload } = action;
+const initialState = {
+  authenticated: "",
+  errorMessage: "",
+};
+
+export default (state = initialState, { type, payload }) => {
+  // const { type, payload } = action
   switch (type) {
-    case CHANGE_AUTH:
-      return payload;
+    case AUTH_USER:
+      return { ...state, authenticated: payload };
+    case AUTH_ERROR:
+      return { ...state, errorMessage: payload };
     default:
       return state;
   }
-}
+};

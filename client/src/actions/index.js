@@ -1,21 +1,15 @@
-import { FETCH_COMMENTS, SAVE_COMMENT, CHANGE_AUTH } from "actions/types";
+import { AUTH_ERROR, AUTH_USER } from "./types";
 import axios from "axios";
 
-export const saveComment = (comment) => {
-  return {
-    type: SAVE_COMMENT,
-    payload: comment,
-  };
-};
-
-export const fetchComments = async () => {
-  const { data } = await axios.get(
-    "https://jsonplaceholder.typicode.com/comments"
-  );
-
-  return { type: FETCH_COMMENTS, payload: data };
-};
-
-export const changeAuth = (isLoggedIn) => async (dispatch) => {
-  dispatch({ type: CHANGE_AUTH, payload: isLoggedIn });
+export const Signup = (formProps, callback) => async (dispatch) => {
+  await axios
+    .post("http://localhost:3090/signup", formProps)
+    .then(({ data }) => {
+      dispatch({
+        type: AUTH_USER,
+        payload: data.token,
+      });
+      callback();
+    })
+    .catch((error) => dispatch({ type: AUTH_ERROR, payload: "Email in use" }));
 };
